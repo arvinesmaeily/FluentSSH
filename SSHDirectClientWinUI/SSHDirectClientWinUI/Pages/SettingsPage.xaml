@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="SSHDirectClientWinUI.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SSHDirectClientWinUI.Pages"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+    <ScrollViewer>
+        <StackPanel Spacing="4" Margin="0,0,0,24">
+            
+            <!-- SOCKS5 Proxy Settings -->
+            <TextBlock Text="SOCKS5 Proxy" 
+                       Style="{StaticResource BodyStrongTextBlockStyle}"
+                       Margin="0,0,0,8"/>
+            
+            <controls:SettingsCard Header="Proxy address"
+                                   Description="IP address for the SOCKS5 proxy to listen on">
+                <TextBox x:Name="ProxyAddressTextBox"
+                         Text="127.0.0.1"
+                         Width="200"
+                         TextChanged="ProxyAddressTextBox_TextChanged"/>
+            </controls:SettingsCard>
+
+            <controls:SettingsCard Header="Proxy port"
+                                   Description="Port number for the SOCKS5 proxy">
+                <NumberBox x:Name="ProxyPortNumberBox"
+                           Value="1080"
+                           Minimum="1"
+                           Maximum="65535"
+                           SpinButtonPlacementMode="Compact"
+                           Width="120"
+                           ValueChanged="ProxyPortNumberBox_ValueChanged"/>
+            </controls:SettingsCard>
+
+            <!-- SSH Connection Settings -->
+            <TextBlock Text="SSH Connection" 
+                       Style="{StaticResource BodyStrongTextBlockStyle}"
+                       Margin="0,24,0,8"/>
+            
+            <controls:SettingsCard Header="Connection timeout"
+                                   Description="Timeout in seconds (0 = 1 day)">
+                <NumberBox x:Name="TimeoutNumberBox"
+                           Value="0"
+                           Minimum="0"
+                           Maximum="86400"
+                           SpinButtonPlacementMode="Compact"
+                           Width="120"
+                           ValueChanged="TimeoutNumberBox_ValueChanged"/>
+            </controls:SettingsCard>
+
+            <controls:SettingsCard Header="Keep-alive interval"
+                                   Description="Interval in seconds to send keep-alive packets (0 = 1 minute)">
+                <NumberBox x:Name="KeepAliveNumberBox"
+                           Value="0"
+                           Minimum="0"
+                           Maximum="3600"
+                           SpinButtonPlacementMode="Compact"
+                           Width="120"
+                           ValueChanged="KeepAliveNumberBox_ValueChanged"/>
+            </controls:SettingsCard>
+
+            <controls:SettingsCard Header="Maximum retries"
+                                   Description="Number of reconnection attempts on failure">
+                <NumberBox x:Name="MaxRetriesNumberBox"
+                           Value="10"
+                           Minimum="0"
+                           Maximum="100"
+                           SpinButtonPlacementMode="Compact"
+                           Width="120"
+                           ValueChanged="MaxRetriesNumberBox_ValueChanged"/>
+            </controls:SettingsCard>
+
+            <!-- Appearance -->
+            <TextBlock Text="Appearance" 
+                       Style="{StaticResource BodyStrongTextBlockStyle}"
+                       Margin="0,24,0,8"/>
+            
+            <controls:SettingsCard Header="App theme"
+                                   Description="Select which app theme to display">
+                <ComboBox x:Name="ThemeComboBox"
+                          Width="150"
+                          SelectionChanged="ThemeComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Use system setting" Tag="Default"/>
+                    <ComboBoxItem Content="Light" Tag="Light"/>
+                    <ComboBoxItem Content="Dark" Tag="Dark"/>
+                </ComboBox>
+            </controls:SettingsCard>
+
+            <!-- About -->
+            <TextBlock Text="About" 
+                       Style="{StaticResource BodyStrongTextBlockStyle}"
+                       Margin="0,24,0,8"/>
+            
+            <controls:SettingsExpander Header="SSH Direct Client"
+                                       Description="A SOCKS5 proxy over SSH tunnel">
+                <controls:SettingsExpander.HeaderIcon>
+                    <FontIcon Glyph="&#xE946;"/>
+                </controls:SettingsExpander.HeaderIcon>
+                
+                <controls:SettingsExpander.Items>
+                    <controls:SettingsCard Header="Version">
+                        <TextBlock Text="2.0.0" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    </controls:SettingsCard>
+                    
+                    <controls:SettingsCard Header="Developer">
+                        <TextBlock Text="Black Platinum" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    </controls:SettingsCard>
+                    
+                    <controls:SettingsCard Header="GitHub" IsClickEnabled="True" Click="GitHubCard_Click">
+                        <FontIcon Glyph="&#xE8A7;" FontSize="14"/>
+                    </controls:SettingsCard>
+                </controls:SettingsExpander.Items>
+            </controls:SettingsExpander>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

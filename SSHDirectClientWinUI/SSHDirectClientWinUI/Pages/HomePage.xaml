@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="SSHDirectClientWinUI.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SSHDirectClientWinUI.Pages"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+	<ScrollViewer>
+		<StackPanel Spacing="4" Margin="0,0,0,24">
+
+			<!-- Status Card with colored indicator -->
+			<Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="16">
+
+				<StackPanel Orientation="Horizontal" Spacing="12">
+					<Ellipse x:Name="StatusIndicator"
+                             Width="12" Height="12"
+                             Fill="Gray"
+                             VerticalAlignment="Center"/>
+					<TextBlock x:Name="StatusText"
+                               Text="Disconnected"
+                               Style="{StaticResource BodyStrongTextBlockStyle}"
+                               VerticalAlignment="Center"/>
+				</StackPanel>
+			</Border>
+
+			<!-- Connection Status Card -->
+			<Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="16"
+                    Margin="0,8,0,0">
+
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+
+					<StackPanel>
+						<TextBlock Text="Connection"
+                                   Style="{StaticResource SubtitleTextBlockStyle}"/>
+
+						<TextBlock x:Name="SelectedConfigText"
+                                   Text="No configuration selected"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                   Margin="0,4,0,0"/>
+
+						<StackPanel x:Name="ConnectingPanel"
+                                    Orientation="Horizontal"
+                                    Spacing="8"
+                                    Margin="0,12,0,0"
+                                    Visibility="Collapsed">
+							<ProgressRing IsActive="True" Width="20" Height="20"/>
+							<TextBlock Text="Connecting..."
+                                       VerticalAlignment="Center"
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+						</StackPanel>
+					</StackPanel>
+
+					<StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Top">
+						<!-- Connect Button - Green -->
+						<Button x:Name="ConnectButton"
+                                Click="ConnectButton_Click"
+                                MinWidth="120"
+                                Style="{StaticResource GreenButtonStyle}">
+							<StackPanel Orientation="Horizontal" Spacing="8">
+								<FontIcon Glyph="&#xE703;" FontSize="16"/>
+								<TextBlock Text="Connect"/>
+							</StackPanel>
+						</Button>
+
+						<!-- Disconnect Button - Red -->
+						<Button x:Name="DisconnectButton"
+                                Click="DisconnectButton_Click"
+                                MinWidth="120"
+                                Visibility="Collapsed"
+                                Style="{StaticResource RedButtonStyle}">
+							<StackPanel Orientation="Horizontal" Spacing="8">
+								<FontIcon Glyph="&#xE8D8;" FontSize="16"/>
+								<TextBlock Text="Disconnect"/>
+							</StackPanel>
+						</Button>
+					</StackPanel>
+				</Grid>
+			</Border>
+
+			<!-- Proxy Info Card (visible when connected) -->
+			<Border x:Name="ProxyInfoCard"
+                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="16"
+                    Margin="0,8,0,0"
+                    Visibility="Collapsed">
+
+				<StackPanel>
+					<TextBlock Text="SOCKS5 Proxy"
+                               Style="{StaticResource SubtitleTextBlockStyle}"/>
+
+					<Grid Margin="0,12,0,0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+
+						<TextBlock Text="Address:"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                   Margin="0,0,16,4"/>
+						<TextBlock x:Name="ProxyAddressText"
+                                   Grid.Column="1"
+                                   Text="127.0.0.1"
+                                   Margin="0,0,0,4"/>
+
+						<TextBlock Text="Port:"
+                                   Grid.Row="1"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                   Margin="0,0,16,0"/>
+						<TextBlock x:Name="ProxyPortText"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="1080"/>
+					</Grid>
+				</StackPanel>
+			</Border>
+
+			<!-- Logs Section - SettingsExpander Style -->
+			<controls:SettingsExpander x:Name="LogsExpander"
+                                       Header="Logs"
+                                       Description="View connection logs and debug information"
+                                       Margin="0,8,0,0">
+				<controls:SettingsExpander.HeaderIcon>
+					<FontIcon Glyph="&#xE7C3;"/>
+				</controls:SettingsExpander.HeaderIcon>
+
+				<controls:SettingsExpander.Items>
+					<Grid HorizontalAlignment="Stretch" Margin="5,15,5,15">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+						<Button Grid.Row="0" HorizontalAlignment="Right" Click="ClearLogsButton_Click" Margin="0,0,0,12">
+							<TextBlock Text="Clear Logs"/>
+						</Button>
+						<Border Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                                CornerRadius="4"
+                                Padding="12"
+                                MaxHeight="250">
+							<ScrollViewer VerticalScrollBarVisibility="Auto">
+								<TextBlock x:Name="LogsTextBlock"
+                                           TextWrapping="Wrap"
+                                           FontFamily="Consolas"
+                                           FontSize="12"
+                                           IsTextSelectionEnabled="True"
+                                           Text="No logs yet."/>
+							</ScrollViewer>
+						</Border>
+					</Grid>
+				</controls:SettingsExpander.Items>
+			</controls:SettingsExpander>
+
+		</StackPanel>
+	</ScrollViewer>
+</Page>
