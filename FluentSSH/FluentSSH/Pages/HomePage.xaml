@@ -147,29 +147,31 @@
 					<FontIcon Glyph="&#xE7C3;"/>
 				</controls:SettingsExpander.HeaderIcon>
 
-				<controls:SettingsExpander.Items>
-					<Grid HorizontalAlignment="Stretch" Margin="5,15,5,15">
-						<Grid.RowDefinitions>
-							<RowDefinition Height="Auto"/>
-							<RowDefinition Height="Auto"/>
-						</Grid.RowDefinitions>
-						<Button Grid.Row="0" HorizontalAlignment="Right" Click="ClearLogsButton_Click" Margin="0,0,0,12">
-							<TextBlock Text="Clear Logs"/>
-						</Button>
-						<Border Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
-                                CornerRadius="4"
-                                Padding="12"
-                                MaxHeight="250">
-							<ScrollViewer VerticalScrollBarVisibility="Auto">
-								<TextBlock x:Name="LogsTextBlock"
-                                           TextWrapping="Wrap"
-                                           FontFamily="Consolas"
-                                           FontSize="12"
-                                           IsTextSelectionEnabled="True"
-                                           Text="No logs yet."/>
-							</ScrollViewer>
-						</Border>
-					</Grid>
+			<controls:SettingsExpander.Items>
+					<controls:SettingsCard HorizontalContentAlignment="Stretch" ContentAlignment="Vertical">
+						<Grid HorizontalAlignment="Stretch">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"/>
+								<RowDefinition Height="Auto"/>
+							</Grid.RowDefinitions>
+							<Button Grid.Row="0" HorizontalAlignment="Right" Click="ClearLogsButton_Click" Margin="0,0,0,12">
+								<TextBlock Text="Clear Logs"/>
+							</Button>
+							<Border Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+									CornerRadius="4"
+									Padding="12"
+									MaxHeight="250">
+								<ScrollViewer VerticalScrollBarVisibility="Auto">
+									<TextBlock x:Name="LogsTextBlock"
+											   TextWrapping="Wrap"
+											   FontFamily="Consolas"
+											   FontSize="12"
+											   IsTextSelectionEnabled="True"
+											   Text="No logs yet."/>
+								</ScrollViewer>
+							</Border>
+						</Grid>
+					</controls:SettingsCard>
 				</controls:SettingsExpander.Items>
 			</controls:SettingsExpander>
 

@@ -104,7 +104,7 @@
                 
                 <controls:SettingsExpander.Items>
                     <controls:SettingsCard Header="Version">
-                        <TextBlock Text="2.0.0" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                        <TextBlock Text="1.0.0" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
                     </controls:SettingsCard>
                     
                     <controls:SettingsCard Header="Developer">
