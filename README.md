@@ -28,6 +28,24 @@ This project utilizes the [SSH.NET](https://github.com/sshnet/SSH.NET) library.
 
 ---
 
+## 🖼️ Screenshots
+<table>
+  <tr>
+    <td><img src="https://github.com/arvinesmaeily/FluentSSH/blob/master/screenshots/home-dark.png"></td>
+    <td><img src="https://github.com/arvinesmaeily/FluentSSH/blob/master/screenshots/home-light.png"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/arvinesmaeily/FluentSSH/blob/master/screenshots/confs-dark.png"></td>
+    <td><img src="https://github.com/arvinesmaeily/FluentSSH/blob/master/screenshots/confs-light.png"></td>
+  </tr>
+    <tr>
+    <td><img src="https://github.com/arvinesmaeily/FluentSSH/blob/master/screenshots/settings-dark.png"></td>
+    <td><img src="https://github.com/arvinesmaeily/FluentSSH/blob/master/screenshots/settings-light.png"></td>
+  </tr>
+</table>
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -109,4 +127,4 @@ When reporting a connection problem, **include the relevant output from the Logs
 
 ## 📜 License
 
-This project is under an [MIT](https://choosealicense.com/licenses/mit/) License. Visit [LICENSE](https://github.com/arvinesmaeily/FluentSSH/blob/master/LICENSE.txt) for more info.
+This project is under an [MIT](https://choosealicense.com/licenses/mit/) License. Visit [LICENSE](https://github.com/arvinesmaeily/FluentSSH/blob/master/LICENSE) for more info.
