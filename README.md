@@ -1,5 +1,5 @@
 ﻿<p align="center">
-  <img src="" width="80" alt="Fluent SSH Icon">
+  <img src="https://github.com/arvinesmaeily/FluentSSH/blob/master/FluentSSH/FluentSSH/Resources/Icon/icon-bg.png?raw=true" width="128" alt="Fluent SSH Icon">
 </p>
 <h1 align="center">Fluent SSH</h1>
 
@@ -109,4 +109,4 @@ When reporting a connection problem, **include the relevant output from the Logs
 
 ## 📜 License
 
-This project is licensed under the [MIT License](LICENSE.txt).
+This project is under an [MIT](https://choosealicense.com/licenses/mit/) License. Visit [LICENSE](https://github.com/arvinesmaeily/FluentSSH/blob/master/LICENSE.txt) for more info.
